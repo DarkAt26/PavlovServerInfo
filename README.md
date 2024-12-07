@@ -1,3 +1,4 @@
+![grafik](https://github.com/user-attachments/assets/83a670c9-82c2-4655-afb1-a6a2ba7d97a9)
 # ServerInfo
 Displays a pavlovs server info via ip
 
