@@ -10,19 +10,50 @@ namespace ServerInfo
 {
     internal class Core
     {
-        //change me
-        public static string gameVersion = "1.0.23";
-        public static string ip = "45.77.65.193";
-        public static double frequency = 2.5;
-        //change me
-
-
+        public static string gameVersion = "";
+        public static string ip = "";
+        public static double frequency = 5;
 
         public static string displayContent = "";
         public static HttpClient client = new HttpClient();
 
-        public static void Main()
+        public static void Main(string[] args)
         {
+            switch (args.Length)
+            {
+                case 0:
+                    Console.WriteLine("GameVersion:");
+                    gameVersion = Console.ReadLine();
+                    Console.WriteLine("Ip:");
+                    ip = Console.ReadLine();
+                    Console.WriteLine("UpdateFrequency:");
+                    frequency = Convert.ToDouble(Console.ReadLine());
+                    break;
+
+                case 1:
+                    gameVersion = args[0];
+                    Console.WriteLine("Ip:");
+                    ip = Console.ReadLine();
+                    break;
+
+                case 2:
+                    gameVersion = args[0];
+                    ip = args[1];
+                    break;
+
+                case 3:
+                    gameVersion = args[0];
+                    ip = args[1];
+                    frequency = Convert.ToDouble(args[2]);
+                    break;
+            }
+            Console.WriteLine("GameVersion: " + gameVersion);
+            Console.WriteLine("Ip: " + ip);
+            Console.WriteLine("UpdateFrequency: " + frequency);
+            Console.WriteLine();
+            Console.Write("Press Enter to Start...");
+            Console.Read();
+
             while (true)
             {
                 Server serverData = GetServerData(ip);
@@ -40,10 +71,10 @@ namespace ServerInfo
         public static void UpdateDisplay(Server server)
         {
             string newContent = $@"
-version/updated      {server.Version} / {server.Updated:yyyy-MM-dd HH:mm:ss}
-name                 {server.Name}
-map/gameMode         {server.MapLabel} ({server.MapId}) / {server.GameModeLabel} ({server.GameMode})
-ip/port/slots        {server.Ip}:{server.Port} / {server.Slots}/{server.MaxSlots}
+Version/Updated      {server.Version} / {server.Updated:yyyy-MM-dd HH:mm:ss}
+Name                 {server.Name}
+Map/GameMode         {server.MapLabel} ({server.MapId}) / {server.GameModeLabel} ({server.GameMode})
+Ip/Port/Slots        {server.Ip}:{server.Port} / {server.Slots}/{server.MaxSlots}
 PW/Secured/PTVV      {server.BPasswordProtected.ToString().ToLower()} / {server.BSecured.ToString().ToLower()} / {server.BPavTVVOIP.ToString().ToLower()}
 ";
 
