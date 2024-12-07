@@ -10,9 +10,13 @@ namespace ServerInfo
 {
     internal class Core
     {
+        //change me
         public static string gameVersion = "1.0.23";
         public static string ip = "45.77.65.193";
         public static double frequency = 2.5;
+        //change me
+
+
 
         public static string displayContent = "";
         public static HttpClient client = new HttpClient();
