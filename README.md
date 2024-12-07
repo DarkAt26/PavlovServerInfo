@@ -8,7 +8,7 @@ First param: GameVersion, requird & will ask for it if not set
 Second param: Ip, required & will ask for it if not set
 Third param: UpdateFrequency(Seconds,double), optional (default = 5 seconds)
 
-Example: 1.0.23 194.242.56.49 1
+Example: 1.0.23 194.242.56.49 1,5
 GameVersion:      "1.0.23"
-Ip:              "194.242.56.49"
-UpdateFrequency:  "1"
+Ip:               "194.242.56.49"
+UpdateFrequency:  1,5
